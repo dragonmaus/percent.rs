@@ -1,7 +1,7 @@
 [package]
 edition = "2018"
 name = "percent"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["David Wildasin <dragonmaus@posteo.net>"]
 publish = false
 description = "Percent encoding/decoding utilities"
@@ -11,6 +11,6 @@ repository = "https://git.dragonma.us/dragonmaus/percent.rs"
 
 [dependencies]
 getopt = "0.4"
-my = { path = "../my" }
+my = { git = "https://git.dragonma.us/dragonmaus/my.rs", version = "0.1" }
 
 # NOTE: binary names are temporary until https://github.com/rust-lang/cargo/issues/1706 is resolved
