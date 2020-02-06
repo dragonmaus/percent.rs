@@ -1,0 +1,16 @@
+[package]
+edition = "2018"
+name = "percent"
+version = "0.1.0"
+authors = ["David Wildasin <dragonmaus@posteo.net>"]
+publish = false
+description = "Percent encoding/decoding utilities"
+categories = ["command-line-utilities"]
+license = "BSD-3-Clause-Clear"
+repository = "https://git.dragonma.us/dragonmaus/percent.rs"
+
+[dependencies]
+getopt = "0.4"
+my = { path = "../my" }
+
+# NOTE: binary names are temporary until https://github.com/rust-lang/cargo/issues/1706 is resolved
