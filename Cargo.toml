@@ -11,6 +11,6 @@ repository = "https://git.dragonma.us/dragonmaus/percent.rs"
 
 [dependencies]
 getopt = "0.4"
-my = { git = "https://git.dragonma.us/dragonmaus/my.rs", version = "0.1" }
+my = { git = "https://gitlab.com/dragonmaus/my.rs", version = "0.1" }
 
 # NOTE: binary names are temporary until https://github.com/rust-lang/cargo/issues/1706 is resolved
