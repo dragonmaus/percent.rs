@@ -1,14 +1,13 @@
 use getopt::prelude::*;
-use my::{program_main, util};
 use std::{
     error::Error,
     io::{self, prelude::*, BufReader},
 };
 
-program_main!("de%");
+program::main!("de%");
 
 fn usage_line() -> String {
-    format!("Usage: {} [-hn]", util::program_name("de%"))
+    format!("Usage: {} [-hn]", program::name("de%"))
 }
 
 fn print_usage() -> Result<i32, Box<dyn Error>> {
@@ -20,7 +19,7 @@ fn print_usage() -> Result<i32, Box<dyn Error>> {
 }
 
 fn program() -> Result<i32, Box<dyn Error>> {
-    let mut opts = Parser::new(&util::program_args(), "hn");
+    let mut opts = Parser::new(&program::args(), "hn");
 
     let mut linewise = true;
     loop {

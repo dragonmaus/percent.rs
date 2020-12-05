@@ -2,19 +2,19 @@
 # It is not intended for manual editing.
 [[package]]
 name = "getopt"
-version = "0.4.3"
+version = "1.0.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a95225aadfc0023a68bac67428ed974a3bc3d1223b345549b0375b38472efc22"
-
-[[package]]
-name = "my"
-version = "0.1.0"
-source = "git+https://gitlab.com/dragonmaus/my.rs#f3c016c3a753aa693020d7955e9941d8379be0fa"
+checksum = "09967f2490f1eadf673ed7beb29a98948e04dee3f117c104121507d8336ec302"
 
 [[package]]
 name = "percent"
 version = "0.1.1"
 dependencies = [
  "getopt",
- "my",
+ "program",
 ]
+
+[[package]]
+name = "program"
+version = "1.1.0"
+source = "git+https://git.dragonma.us/dragonmaus/program.rs#0b209ce9062e38d1b50191259394cab83619cd3b"
