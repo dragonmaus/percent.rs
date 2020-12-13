@@ -7,15 +7,14 @@ use std::{
 program::main!("de%");
 
 fn usage_line() -> String {
-    format!("Usage: {} [-hn]", program::name("de%"))
+    format!("Usage: {} [-h] [-n]", program::name("de%"))
 }
 
-fn print_usage() -> Result<i32, Box<dyn Error>> {
+fn print_usage() {
     println!("{}", usage_line());
-    println!("  -h   display this help");
     println!("  -n   newlines are encoded in input");
-
-    Ok(0)
+    println!();
+    println!("  -h   display this help");
 }
 
 fn program() -> Result<i32, Box<dyn Error>> {
@@ -26,8 +25,11 @@ fn program() -> Result<i32, Box<dyn Error>> {
         match opts.next().transpose()? {
             None => break,
             Some(opt) => match opt {
-                Opt('h', None) => return print_usage(),
                 Opt('n', None) => linewise = false,
+                Opt('h', None) => {
+                    print_usage();
+                    return Ok(0);
+                }
                 _ => unreachable!(),
             },
         }

@@ -8,7 +8,7 @@ checksum = "09967f2490f1eadf673ed7beb29a98948e04dee3f117c104121507d8336ec302"
 
 [[package]]
 name = "percent"
-version = "0.1.1"
+version = "0.1.2"
 dependencies = [
  "getopt",
  "program",

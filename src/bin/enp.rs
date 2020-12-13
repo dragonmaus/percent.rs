@@ -7,16 +7,15 @@ use std::{
 program::main!("en%");
 
 fn usage_line() -> String {
-    format!("Usage: {} [-hnq]", program::name("en%"))
+    format!("Usage: {} [-h] [-nq]", program::name("en%"))
 }
 
-fn print_usage() -> Result<i32, Box<dyn Error>> {
+fn print_usage() {
     println!("{}", usage_line());
-    println!("  -h   display this help");
     println!("  -n   encode newlines");
     println!("  -q   use query string formatting (space => '+' instead of '%20')");
-
-    Ok(0)
+    println!();
+    println!("  -h   display this help");
 }
 
 fn program() -> Result<i32, Box<dyn Error>> {
@@ -28,9 +27,12 @@ fn program() -> Result<i32, Box<dyn Error>> {
         match opts.next().transpose()? {
             None => break,
             Some(opt) => match opt {
-                Opt('h', None) => return print_usage(),
                 Opt('n', None) => linewise = false,
                 Opt('q', None) => query = true,
+                Opt('h', None) => {
+                    print_usage();
+                    return Ok(0);
+                }
                 _ => unreachable!(),
             },
         }
@@ -38,7 +40,7 @@ fn program() -> Result<i32, Box<dyn Error>> {
 
     if linewise {
         for line in BufReader::new(io::stdin()).lines() {
-            let bytes: Vec<u8> = encode(line.unwrap().as_bytes(), query)?;
+            let bytes: Vec<u8> = encode(line.unwrap().as_bytes(), query);
             println!(
                 "{}",
                 String::from_utf8(bytes)
@@ -49,7 +51,7 @@ fn program() -> Result<i32, Box<dyn Error>> {
         let mut input: Vec<u8> = Vec::new();
         BufReader::new(io::stdin()).read_to_end(&mut input)?;
 
-        let bytes: Vec<u8> = encode(&input, query)?;
+        let bytes: Vec<u8> = encode(&input, query);
         print!(
             "{}",
             String::from_utf8(bytes)
@@ -60,7 +62,7 @@ fn program() -> Result<i32, Box<dyn Error>> {
     Ok(0)
 }
 
-fn encode(bytes: &[u8], query: bool) -> io::Result<Vec<u8>> {
+fn encode(bytes: &[u8], query: bool) -> Vec<u8> {
     let mut output: Vec<u8> = Vec::new();
 
     for byte in bytes {
@@ -73,5 +75,5 @@ fn encode(bytes: &[u8], query: bool) -> io::Result<Vec<u8>> {
         }
     }
 
-    Ok(output)
+    output
 }

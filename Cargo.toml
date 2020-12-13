@@ -1,6 +1,6 @@
 [package]
 name = "percent"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["David Wildasin <dragonmaus@posteo.net>"]
 edition = "2018"
 description = "Percent encoding/decoding utilities"
