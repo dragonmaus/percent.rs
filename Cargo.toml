@@ -11,6 +11,6 @@ publish = false
 
 [dependencies]
 getopt = "1"
-program = { git = "https://git.dragonma.us/dragonmaus/program.rs", version = "1" }
+program = { git = "https://git.dragonma.us/dragonmaus/program.rs", version = "2" }
 
 # NOTE: binary names are temporary until https://github.com/rust-lang/cargo/issues/1706 is resolved

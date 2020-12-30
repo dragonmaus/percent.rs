@@ -1,24 +1,17 @@
-use getopt::prelude::*;
-use std::{
-    error::Error,
-    io::{self, prelude::*, BufReader},
-};
+use getopt::Opt;
+use std::io::{self, BufRead, BufReader, Read};
 
 program::main!("de%");
 
-fn usage_line() -> String {
-    format!("Usage: {} [-h] [-n]", program::name("de%"))
-}
-
-fn print_usage() {
-    println!("{}", usage_line());
+fn print_usage(program_name: &str) {
+    println!("Usage: {} [-h] [-n]", program_name);
     println!("  -n   newlines are encoded in input");
     println!();
     println!("  -h   display this help");
 }
 
-fn program() -> Result<i32, Box<dyn Error>> {
-    let mut opts = Parser::new(&program::args(), "hn");
+fn program(name: &str) -> program::Result {
+    let mut opts = getopt::Parser::new(&program::args(), "hn");
 
     let mut linewise = true;
     loop {
@@ -27,7 +20,7 @@ fn program() -> Result<i32, Box<dyn Error>> {
             Some(opt) => match opt {
                 Opt('n', None) => linewise = false,
                 Opt('h', None) => {
-                    print_usage();
+                    print_usage(name);
                     return Ok(0);
                 }
                 _ => unreachable!(),

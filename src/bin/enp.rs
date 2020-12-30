@@ -1,25 +1,18 @@
-use getopt::prelude::*;
-use std::{
-    error::Error,
-    io::{self, prelude::*, BufReader},
-};
+use getopt::Opt;
+use std::io::{self, BufRead, BufReader, Read};
 
 program::main!("en%");
 
-fn usage_line() -> String {
-    format!("Usage: {} [-h] [-nq]", program::name("en%"))
-}
-
-fn print_usage() {
-    println!("{}", usage_line());
+fn print_usage(program_name: &str) {
+    println!("Usage: {} [-h] [-nq]", program_name);
     println!("  -n   encode newlines");
     println!("  -q   use query string formatting (space => '+' instead of '%20')");
     println!();
     println!("  -h   display this help");
 }
 
-fn program() -> Result<i32, Box<dyn Error>> {
-    let mut opts = Parser::new(&program::args(), "dehnq");
+fn program(name: &str) -> program::Result {
+    let mut opts = getopt::Parser::new(&program::args(), "dehnq");
 
     let mut linewise = true;
     let mut query = false;
@@ -30,7 +23,7 @@ fn program() -> Result<i32, Box<dyn Error>> {
                 Opt('n', None) => linewise = false,
                 Opt('q', None) => query = true,
                 Opt('h', None) => {
-                    print_usage();
+                    print_usage(name);
                     return Ok(0);
                 }
                 _ => unreachable!(),
