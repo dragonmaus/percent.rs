@@ -1,0 +1,19 @@
+[package]
+name = "percent"
+version = "1.0.0"
+authors = ["David Wildasin <dragonmaus@posteo.net>"]
+edition = "2018"
+description = "Simple percent encoding/decoding utilities"
+repository = "https://git.dragonma.us/rust/percent"
+license = "BSD-3-Clause-Clear"
+categories = ["command-line-utilities"]
+publish = false
+
+[dependencies]
+getopt = "1"
+program = { git = "git://git.dragonma.us/rust/program" }
+
+# NOTE: binary names are temporary pending the following:
+# - https://github.com/rust-lang/cargo/issues/1706  -- original issue (closed)
+# - https://github.com/rust-lang/cargo/pull/9627    -- implementation (merged)
+# - https://github.com/rust-lang/cargo/issues/9778  -- stabilization (pending)
