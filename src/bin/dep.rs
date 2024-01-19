@@ -22,7 +22,7 @@ fn program(name: &str) -> program::Result {
                 Opt('h', None) => {
                     print_usage(name);
                     return Ok(0);
-                }
+                },
                 _ => unreachable!(),
             },
         }
@@ -69,7 +69,7 @@ fn decode(bytes: &[u8]) -> io::Result<Vec<u8>> {
                                 io::ErrorKind::InvalidData,
                                 "unexpected end of input",
                             ));
-                        }
+                        },
                         Some(x) => {
                             let x = *x as char;
                             if x.is_ascii_hexdigit() {
@@ -79,7 +79,7 @@ fn decode(bytes: &[u8]) -> io::Result<Vec<u8>> {
                                             io::ErrorKind::InvalidData,
                                             format!("invalid input -- {:?}", x),
                                         ));
-                                    }
+                                    },
                                     Some(x) => x,
                                 };
                                 new_byte += (x * 0x10) as u8;
@@ -89,7 +89,7 @@ fn decode(bytes: &[u8]) -> io::Result<Vec<u8>> {
                                     format!("invalid input -- {:?}", x),
                                 ));
                             }
-                        }
+                        },
                     }
 
                     match bytes.next() {
@@ -98,7 +98,7 @@ fn decode(bytes: &[u8]) -> io::Result<Vec<u8>> {
                                 io::ErrorKind::InvalidData,
                                 "unexpected end of input",
                             ));
-                        }
+                        },
                         Some(x) => {
                             let x = *x as char;
                             if x.is_ascii_hexdigit() {
@@ -108,7 +108,7 @@ fn decode(bytes: &[u8]) -> io::Result<Vec<u8>> {
                                             io::ErrorKind::InvalidData,
                                             format!("invalid input -- {:?}", x),
                                         ));
-                                    }
+                                    },
                                     Some(x) => x,
                                 };
                                 new_byte += x as u8;
@@ -118,11 +118,11 @@ fn decode(bytes: &[u8]) -> io::Result<Vec<u8>> {
                                     format!("invalid input -- {:?}", x),
                                 ));
                             }
-                        }
+                        },
                     }
 
                     output.push(new_byte);
-                }
+                },
                 b'+' => output.push(b' '),
                 _ => output.push(*b),
             },

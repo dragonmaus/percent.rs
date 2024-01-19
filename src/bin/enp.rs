@@ -25,7 +25,7 @@ fn program(name: &str) -> program::Result {
                 Opt('h', None) => {
                     print_usage(name);
                     return Ok(0);
-                }
+                },
                 _ => unreachable!(),
             },
         }
