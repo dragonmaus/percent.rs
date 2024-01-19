@@ -1,8 +1,8 @@
 [package]
 name = "percent"
-version = "1.0.0"
+version = "1.0.1"
 authors = ["David Wildasin <dragonmaus@posteo.net>"]
-edition = "2018"
+edition = "2021"
 description = "Simple percent encoding/decoding utilities"
 repository = "https://git.dragonma.us/rust/percent"
 license = "BSD-3-Clause-Clear"
@@ -19,3 +19,4 @@ git = "git://git.dragonma.us/rust/program"
 # - https://github.com/rust-lang/cargo/issues/1706  -- original issue (closed)
 # - https://github.com/rust-lang/cargo/pull/9627    -- implementation (merged)
 # - https://github.com/rust-lang/cargo/issues/9778  -- stabilization (pending)
+# Last checked on 2024-01-19
